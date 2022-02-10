@@ -138,7 +138,7 @@ public:
         BasicIterator operator++(int) noexcept {
             assert(node_ != nullptr);
             auto result = *this;
-            ++node_;
+            ++*this;
             return result;
         }
 
@@ -270,7 +270,7 @@ public:
     }
 
     void PopFront() noexcept {
-        assert(size_ != 0);
+        assert(!IsEmpty());
         Node* n_node = head_.next_node->next_node;
         delete head_.next_node;
         head_.next_node = n_node;
